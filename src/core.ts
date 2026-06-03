@@ -73,6 +73,12 @@ class TodoList {
     const items = await this.items
     return Array.from(items)
   }
+
+  async editItem(index: number, ItemNovo: Item) {
+    const items = await this.items
+    items.splice(index, 1, ItemNovo)
+    await this.saveListToDisk()
+  }
 }
 
 export default TodoList

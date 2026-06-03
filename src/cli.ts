@@ -75,6 +75,35 @@ if (command === 'remove') {
 }
 
 // ------------------------------------------------------------------------------
+// --- Comando Remove
+// ------------------------------------------------------------------------------
+
+if (command === 'edit') {
+    const indexStr = params[3]
+    const novoItem = params[4]
+
+    if (!indexStr) {
+        console.error('Índice do item a ser removido não pode ser nulo ou vazio')
+        process.exit(1)
+    }
+    const index = parseInt(indexStr)
+    if (isNaN(index)) {
+        console.error('Índice precisa ser um número:', indexStr)
+        process.exit(1)
+    }
+
+if (!novoItem) {
+        console.error('Valor do item não pode ser nulo ou vazio')
+        process.exit(1)
+    }
+
+
+    await todolist.editItem(index,new Item(novoItem))
+    console.log('Item editado com sucesso:', index)
+    process.exit(0)
+}
+
+// ------------------------------------------------------------------------------
 // --- Fallback para comandos não reconhecidos
 // ------------------------------------------------------------------------------
 
